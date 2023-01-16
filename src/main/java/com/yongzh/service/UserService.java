@@ -2,7 +2,9 @@ package com.yongzh.service;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
   * @description:
@@ -15,14 +17,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserService {
 
-    private  OrderService orderService;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
 
   /*  public UserService() {
         System.out.println("0");
     }*/
 
-    @Autowired
+  /*  @Autowired
     public UserService(OrderService orderService){
         this.orderService = orderService;
         System.out.println("1");
@@ -31,8 +34,11 @@ public class UserService {
     public UserService(OrderService orderService ,OrderService orderService1){
         this.orderService = orderService;
         System.out.println("2");
-    }
+    }*/
+    @Transactional
     public void test(){
-        System.out.println(orderService);
+        jdbcTemplate.execute("insert into payment values (40,123)");
+        throw  new NullPointerException();
+
     }
 }

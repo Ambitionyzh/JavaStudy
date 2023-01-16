@@ -18,9 +18,9 @@ public class Test {
         UserService userService = (UserService)annotationConfigApplicationContext.getBean("userService");
         userService.test();
 
-        System.out.println(annotationConfigApplicationContext.getBean("orderService"));
+ /*       System.out.println(annotationConfigApplicationContext.getBean("orderService"));
         System.out.println(annotationConfigApplicationContext.getBean("orderService1"));
-        System.out.println(annotationConfigApplicationContext.getBean("orderService2"));
+        System.out.println(annotationConfigApplicationContext.getBean("orderService2"));*/
 
 
     }
