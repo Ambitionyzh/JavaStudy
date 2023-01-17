@@ -4,6 +4,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -19,6 +20,9 @@ public class UserService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private  UserService userService;
 
 
   /*  public UserService() {
@@ -37,8 +41,12 @@ public class UserService {
     }*/
     @Transactional
     public void test(){
-        jdbcTemplate.execute("insert into payment values (40,123)");
-        throw  new NullPointerException();
+        jdbcTemplate.execute("insert into payment values (46,123)");
+        userService.a();
 
+    }
+    @Transactional(propagation =  Propagation.NEVER)
+    public void a(){
+        jdbcTemplate.execute("insert into payment values (44,123)");
     }
 }
