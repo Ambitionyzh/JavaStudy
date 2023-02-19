@@ -7,6 +7,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -20,11 +21,13 @@ import javax.sql.DataSource;
  * @date 2023/1/6 21:26
  */
 @ComponentScan("com.yongzh")
-@EnableTransactionManagement
-@Configuration//保证jdbc和十五管理器的dataSource对象是 同一个
+@EnableAspectJAutoProxy
+@EnableAsync
+//@EnableTransactionManagement
+//@Configuration//保证jdbc和事务管理器的dataSource对象是 同一个
 public class AppConfig {
 
-    @Bean
+   /* @Bean
     public JdbcTemplate jdbcTemplate(){
         return new JdbcTemplate(dataSource());
     }
@@ -44,6 +47,6 @@ public class AppConfig {
         dataSource.setPassword("root");
 
         return  dataSource;
-    }
+    }*/
 
 }

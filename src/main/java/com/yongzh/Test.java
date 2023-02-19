@@ -2,7 +2,8 @@ package com.yongzh;
 
 import java.lang.annotation.Annotation;
 
-import com.yongzh.service.UserService;
+import com.yongzh.service.Aservice;
+//import com.yongzh.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -15,8 +16,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Test {
     public  static void main(String[] args){
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        UserService userService = (UserService)annotationConfigApplicationContext.getBean("userService");
-        userService.test();
+     /*   UserService userService = (UserService)annotationConfigApplicationContext.getBean("userService");
+        userService.test();*/
+        Aservice aservice = (Aservice)annotationConfigApplicationContext.getBean("aservice");
+        aservice.test();
 
  /*       System.out.println(annotationConfigApplicationContext.getBean("orderService"));
         System.out.println(annotationConfigApplicationContext.getBean("orderService1"));

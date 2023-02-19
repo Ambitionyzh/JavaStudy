@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
  * @description: AOP切面
  * @date 2023/1/16 23:20
  */
-/*@Aspect
-@Component*/
+@Aspect
+@Component
 public class AopAspect {
 
-    @Before("execution(public void com.yongzh.service.UserService.test())")
+    @Before("execution(public void com.yongzh.service.Aservice.test())")
     public  void aopBefore(JoinPoint joinPoint){
         System.out.println("AopBefore");
     }
