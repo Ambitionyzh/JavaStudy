@@ -1,7 +1,7 @@
 package com.yongzh;
 
+import com.spring.ComponentScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,9 +20,9 @@ import javax.sql.DataSource;
  * @description: 配置类
  * @date 2023/1/6 21:26
  */
-@ComponentScan("com.yongzh")
-@EnableAspectJAutoProxy
-@EnableAsync
+@ComponentScan("com.yongzh.service")
+/*@EnableAspectJAutoProxy
+@EnableAsync*/
 //@EnableTransactionManagement
 //@Configuration//保证jdbc和事务管理器的dataSource对象是 同一个
 public class AppConfig {

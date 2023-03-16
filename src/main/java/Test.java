@@ -1,4 +1,10 @@
+import java.sql.SQLOutput;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * @author Administrator
@@ -9,8 +15,44 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 public class Test {
-    public  static void main(String[] args) {
+    public  static void main(String[] args) throws InterruptedException {
         ConcurrentHashMap<String,String> concurrentHashMap = new ConcurrentHashMap<>();
         concurrentHashMap.put("1","1");
+        //HashMap
+        //System.out.println(hash(456));
+       // LockSupport
+       /* seeThread();
+        justRun();*/
+        System.out.println(System.currentTimeMillis()%1000);
+
+    }
+    static final int hash(Object key) {
+        int h;
+        System.out.println(key.hashCode());
+        int a =(h = key.hashCode()) ^ (h >>> 16);
+        return  a;
+    }
+    static void justRun() throws InterruptedException {
+        while(Instant.now().isBefore(Instant.now().plus(1,ChronoUnit.DAYS))){
+            System.out.println("running");
+            TimeUnit.SECONDS.sleep(1);
+
+
+        }
+    }
+    static void seeThread(){
+        Thread t = new Thread(()->{
+            System.out.println("this is in a thread");
+            try {
+                TimeUnit.HOURS.sleep(1);
+            }catch (InterruptedException e){
+                throw new RuntimeException();
+            }
+
+        });
+        t.setName("THREAD_DEMO");
+        t.start();
+
     }
 }
+

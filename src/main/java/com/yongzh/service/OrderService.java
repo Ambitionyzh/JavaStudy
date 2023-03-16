@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @description: orderservice
  * @date 2023/1/6 21:23
  */
-@Component
+/*@Component
 public class OrderService {
 
     @Bean
@@ -22,4 +22,4 @@ public class OrderService {
         return new OrderService();
     }
 
-}
+}*/

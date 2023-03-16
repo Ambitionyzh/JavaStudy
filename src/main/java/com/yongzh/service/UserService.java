@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
   * @date: 2023/1/6 21:19
   */
 //@Component它的作用就是实现bean的注入
-@Component
+/*@Component("userService")
 public class UserService {
 
     @Autowired
@@ -25,11 +25,11 @@ public class UserService {
     private  UserService userService;
 
 
-  /*  public UserService() {
+  *//*  public UserService() {
         System.out.println("0");
-    }*/
+    }*//*
 
-  /*  @Autowired
+  *//*  @Autowired
     public UserService(OrderService orderService){
         this.orderService = orderService;
         System.out.println("1");
@@ -38,7 +38,7 @@ public class UserService {
     public UserService(OrderService orderService ,OrderService orderService1){
         this.orderService = orderService;
         System.out.println("2");
-    }*/
+    }*//*
     @Transactional
     public void test(){
         jdbcTemplate.execute("insert into payment values (46,123)");
@@ -49,4 +49,4 @@ public class UserService {
     public void a(){
         jdbcTemplate.execute("insert into payment values (44,123)");
     }
-}
+}*/

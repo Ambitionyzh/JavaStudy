@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
   * @date: 2023/1/6 21:19
   */
 //@Component它的作用就是实现bean的注入
-@Component
+/*@Component
 public class UserServiceBase {
 
     @Autowired
@@ -24,4 +24,4 @@ public class UserServiceBase {
     public void a(){
         jdbcTemplate.execute("insert into payment values (46,123)");
     }
-}
+}*/

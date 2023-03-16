@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @description:
  * @date 2023/2/18 22:18
  */
-@Component
+/*@Component
 public class Aservice {
 
     @Autowired
@@ -21,4 +21,4 @@ public class Aservice {
         System.out.println(bservice);
     }
 
-}
+}*/

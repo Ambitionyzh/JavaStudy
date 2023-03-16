@@ -1,9 +1,14 @@
 package com.yongzh;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 
-import com.yongzh.service.Aservice;
+/*import com.yongzh.service.Aservice;*/
 //import com.yongzh.service.UserService;
+import com.spring.ApplicationContext;
+
+import com.yongzh.service.Userservice1;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -14,12 +19,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @date 2023/1/6 20:41
  */
 public class Test {
-    public  static void main(String[] args){
-        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-     /*   UserService userService = (UserService)annotationConfigApplicationContext.getBean("userService");
+    public  static void main(String[] args) throws Exception {
+
+        ApplicationContext annotationConfigApplicationContext = new ApplicationContext(AppConfig.class);
+
+        Userservice1 userService = (Userservice1) annotationConfigApplicationContext.getBean("userService");
+        userService.test();
+        /*   UserService userService = (UserService)annotationConfigApplicationContext.getBean("userService");
         userService.test();*/
-        Aservice aservice = (Aservice)annotationConfigApplicationContext.getBean("aservice");
-        aservice.test();
+  /*      Aservice aservice = (Aservice)annotationConfigApplicationContext.getBean("aservice");
+        aservice.test();*/
 
  /*       System.out.println(annotationConfigApplicationContext.getBean("orderService"));
         System.out.println(annotationConfigApplicationContext.getBean("orderService1"));
