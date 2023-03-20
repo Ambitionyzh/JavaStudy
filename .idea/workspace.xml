@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dbd861c-d0e7-4df2-ae76-5b721937b67b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/main/java/org/springboot/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/main/java/org/springboot/JettyCondition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/main/java/org/springboot/JettyWebServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/main/java/org/springboot/TomcatCondition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/main/java/org/springboot/TomcatWebServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/main/java/org/springboot/WebServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/main/java/org/springboot/WebServerAutoConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/main/java/org/springboot/YongzhSpringApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/main/java/org/springboot/YongzhSpringBootApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot/src/test/java/org/springboot/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/org/yongzhuser/MyApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/org/yongzhuser/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/test/java/org/yongzhuser/AppTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="6dbd861c-d0e7-4df2-ae76-5b721937b67b" name="Changes" comment="Spring是如何启动web应用的" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,20 +97,30 @@
       <option name="presentableId" value="Default" />
       <updated>1679323412935</updated>
     </task>
+    <task id="LOCAL-00001" summary="Spring是如何启动web应用的">
+      <created>1679330863107</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679330863107</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/springboot/src/main/java/org/springboot/YongzhSpringApplication.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Spring是如何启动web应用的" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring是如何启动web应用的" />
   </component>
 </project>
