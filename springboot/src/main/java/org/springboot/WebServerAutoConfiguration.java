@@ -14,12 +14,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class WebServerAutoConfiguration {
     @Bean
-    @Conditional(TomcatCondition.class)
+    @YongzhConditionalONClass("org.apache.catalina.startup.Tomcat")
     public TomcatWebServer tomcatWebServer(){
         return new TomcatWebServer();
     }
     @Bean
-    @Conditional(JettyCondition.class)
+    @YongzhConditionalONClass("org.eclipse.jetty.server.Server")
     public JettyWebServer jettyWebServer(){
         return new JettyWebServer();
     }

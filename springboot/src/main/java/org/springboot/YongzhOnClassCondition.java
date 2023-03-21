@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
+import java.util.Map;
+
 /**
  * @author yongzh
  * @version 1.0
@@ -11,15 +13,18 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  * @description:
  * @date 2023/3/21 0:24
  */
-public class JettyCondition implements Condition {
+public class YongzhOnClassCondition implements Condition {
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-
+        //metadata为该类上所有注解的信息
         try {
-            context.getClassLoader().loadClass("org.eclipse.jetty.server.Server");
+            Map<String, Object> annotationAttributes = metadata.getAnnotationAttributes(YongzhConditionalONClass.class.getName());
+            String className = (String) annotationAttributes.get("value");
+            context.getClassLoader().loadClass(className);
+            return true;
+
         } catch (ClassNotFoundException e) {
             return false;
         }
-        return true;
     }
 }
