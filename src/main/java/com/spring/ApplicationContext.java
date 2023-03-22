@@ -96,6 +96,7 @@ public class ApplicationContext {
         if(file.isDirectory()){
             File[] files =file.listFiles();
             for (File file1 : files) {
+                //拿到file name 并且转换成class对象
                 String fileName = file1.getAbsolutePath();
                 String className = fileName.substring(fileName.indexOf("com"),fileName.indexOf(".class"));
                 className = className.replace("\\",".");

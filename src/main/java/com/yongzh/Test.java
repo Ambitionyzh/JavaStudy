@@ -20,7 +20,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class Test {
     public  static void main(String[] args) throws Exception {
-
+        //构造Spring容器
         ApplicationContext annotationConfigApplicationContext = new ApplicationContext(AppConfig.class);
 
         Userservice1 userService = (Userservice1) annotationConfigApplicationContext.getBean("userService");
