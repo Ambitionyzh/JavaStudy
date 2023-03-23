@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface UserMapper
 {
-    @Select("select * from user1 where name = #{name} and age =#{age} and first_name = #{name} ")
+    @Select("select * from user1 where name = #{name} and age =#{age} ")
     public List<User> getUser(@Param("name") String name,@Param("age") Integer age);
     public User getUserById(Integer id);
 }
