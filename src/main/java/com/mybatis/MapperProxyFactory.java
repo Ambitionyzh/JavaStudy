@@ -40,19 +40,19 @@ public class MapperProxyFactory {
                 // 参数名：参数值
                 // paramValueMapping存储着参数名：参数值这样的键值对。相当于 变量名：变量值，替换到sql中
                 Map<String, Object> paramValueMapping = new HashMap<>();
-                Parameter[] parameters = method.getParameters();
+                Parameter[] parameters = method.getParameters();//获取方法传来的参数列表
                 for (int i = 0; i < parameters.length; i++) {
                     Parameter parameter = parameters[i];
-                    paramValueMapping.put(parameter.getName(), args[i]);
-                    paramValueMapping.put(parameter.getAnnotation(Param.class).value(), args[i]);
+                    paramValueMapping.put(parameter.getName(), args[i]);//arg0:wuhu
+                    paramValueMapping.put(parameter.getAnnotation(Param.class).value(), args[i]);//name:wuhu
                 }
 
                 //获取Select注解上的sql
                 String sql = method.getAnnotation(Select.class).value();
 
-                //存着参数名称
+                //存着参数名称的list列表
                 ParameterMappingTokenHandler tokenHandler = new ParameterMappingTokenHandler();
-                //把sql中的 #{}--->?
+                //把sql中的 #{}--->?，把#{name}中的name放到tokenHandler
                 GenericTokenParser parser = new GenericTokenParser("#{", "}", tokenHandler);
                 String parseSql = parser.parse(sql);
 
@@ -65,10 +65,13 @@ public class MapperProxyFactory {
                 //2.构造PreparedStatement
                 PreparedStatement statement = connection.prepareStatement(parseSql);
 
-                for (int i = 0; i < tokenHandler.getParameterMappings().size(); i++) {
+                //sql中变量的list
+                List<ParameterMapping> parameterMappingList = tokenHandler.getParameterMappings();
+                for (int i = 0; i < parameterMappingList.size(); i++) {
                     // sql中的#{}变量名
-                    String property = tokenHandler.getParameterMappings().get(i).getProperty();
-                    Object value = paramValueMapping.get(property); // 变量值
+                    String property = parameterMappingList.get(i).getProperty();
+                    // 变量值
+                    Object value = paramValueMapping.get(property);
                     TypeHandler typeHandler = typeHandlerMap.get(value.getClass()); // 根据值类型找TypeHandler
                     typeHandler.setParameter(statement, i + 1, value);
                 }
@@ -81,6 +84,7 @@ public class MapperProxyFactory {
                 List<Object> list = new ArrayList<>();
                 ResultSet resultSet = statement.getResultSet();
 
+                //方法的返回值类型
                 Class resultType = null;
 
                 Type genericReturnType = method.getGenericReturnType();
@@ -94,9 +98,9 @@ public class MapperProxyFactory {
                     resultType = (Class) actualTypeArguments[0];
                 }
 
-                // 根据setter方法记录 属性名：Method对象
+                // 根据字段名找到对应的set方法。 属性名：Method对象。例如：id: setId()
                 Map<String, Method> setterMethodMapping = new HashMap<>();
-                for (Method declaredMethod : resultType.getDeclaredMethods()) {
+                for (Method declaredMethod : resultType.getDeclaredMethods()) {//获取resultType中所有的方法，主要是为了拿set方法
                     if (declaredMethod.getName().startsWith("set")) {
                         String propertyName = declaredMethod.getName().substring(3);
                         propertyName = propertyName.substring(0, 1).toLowerCase(Locale.ROOT) + propertyName.substring(1);
@@ -104,7 +108,7 @@ public class MapperProxyFactory {
                     }
                 }
 
-                // 记录sql返回的所有字段名
+                // 记录sql返回的所有字段名，放到columnList里
                 ResultSetMetaData metaData = resultSet.getMetaData();
                 List<String> columnList = new ArrayList<>();
                 for (int i = 0; i < metaData.getColumnCount(); i++) {
@@ -115,9 +119,12 @@ public class MapperProxyFactory {
                     Object instance = resultType.newInstance();
 
                     for (String column : columnList) {
+                        //根据字段名column找到该字段对应的set方法
                         Method setterMethod = setterMethodMapping.get(column);
                         // 根据setter方法参数类型找到TypeHandler
-                        TypeHandler typeHandler = typeHandlerMap.get(setterMethod.getParameterTypes()[0]);
+                        Class clazz = setterMethod.getParameterTypes()[0];
+                        TypeHandler typeHandler = typeHandlerMap.get(clazz);
+                        //
                         setterMethod.invoke(instance, typeHandler.getResult(resultSet, column));
                     }
                     list.add(instance);

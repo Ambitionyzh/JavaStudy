@@ -14,7 +14,7 @@ import java.util.List;
 public class MyApplication {
     public static void main(String[] args) {
         UserMapper userMapper = MapperProxyFactory.getMapper(UserMapper.class);
-        List<User> result = userMapper.getUser("wuhu",21);
+        User result =  userMapper.getUser("wuhu",23);
         System.out.println(result);
 
         //userMapper.getUserById();

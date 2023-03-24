@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ParameterMappingTokenHandler implements TokenHandler{
 
+    //把变量的名字按照顺序放到parameterMappings
     private List<ParameterMapping> parameterMappings = new ArrayList<ParameterMapping>();
 
     @Override
