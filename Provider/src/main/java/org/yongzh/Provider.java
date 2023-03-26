@@ -1,8 +1,10 @@
 package org.yongzh;
 
 import org.example.HelloService;
+import org.example.common.URL;
 import org.example.protocol.HttpServer;
 import org.example.register.LocalRegister;
+import org.example.register.MapRemoteRegister;
 
 /**
  * @author yongzh
@@ -15,9 +17,12 @@ public class Provider {
     public static void main(String[] args) {
 
         LocalRegister.regist(HelloService.class.getName(), "v1",HelloServiceImpl.class);
-        LocalRegister.regist(HelloService.class.getName(), "v2",HelloServiceImpl2.class);
 
+        //注册中心注册
+        URL url = new URL("localhost",8080);
+
+        MapRemoteRegister.regist(HelloService.class.getName(),url);
         HttpServer httpServer = new HttpServer();
-        httpServer.start("localhost",8080);
+        httpServer.start(url.getHostName(),url.getPort());
     }
 }
