@@ -13,6 +13,7 @@
         <module>Provider</module>
         <module>ProviderCommon</module>
         <module>yongzhRpc</module>
+        <module>tomcat</module>
     </modules>
 
 

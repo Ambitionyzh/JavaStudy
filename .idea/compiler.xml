@@ -9,6 +9,7 @@
         <module name="ProviderCommon" />
         <module name="yongzhRpc" />
         <module name="Consumer" />
+        <module name="tomcat" />
         <module name="Provider" />
       </profile>
     </annotationProcessing>
