@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,9 +16,11 @@ import java.net.Socket;
 public class SocketProcessor implements Runnable{
 
     private Socket socket;
+    private Tomcat tomcat;
 
-    public SocketProcessor(Socket socket) {
+    public SocketProcessor(Socket socket,Tomcat tomcat) {
         this.socket = socket;
+        this.tomcat = tomcat;
     }
 
     @Override
@@ -72,12 +75,37 @@ public class SocketProcessor implements Runnable{
             Request request = new Request(method.toString(), url.toString(), protocl.toString(),socket);
             //构造一个响应对象
             Response response = new Response(request);
-            //匹配servlet,doGet
-            YongzhServlet yongzhServlet = new YongzhServlet();
-            yongzhServlet.service(request,response);
 
-            //发送响应
-            response.complete();
+            String requestUrl = request.getRequestURL().toString();
+            requestUrl = requestUrl.substring(1);
+            String[] parts = requestUrl.split("/");
+            System.out.println(requestUrl);
+            String appName = parts[0];
+            Context context = tomcat.getContextMap().get(appName);
+
+            if(parts.length > 1){
+             //匹配servlet,doGet
+                Servlet servlet = context.getByUrlPattern(parts[1]);
+                if(servlet != null){
+                    servlet.service(request,response);
+
+                    //发送响应
+                    response.complete();
+                }else{
+                    DefaultServlet defaultServlet = new DefaultServlet();
+                    defaultServlet.service(request,response);
+
+                    //发送响应
+                    response.complete();
+                }
+
+
+
+
+        /*    YongzhServlet yongzhServlet = new YongzhServlet();
+            yongzhServlet.service(request,response);*/
+
+            }
 
 
         }catch (IOException e){
