@@ -58,6 +58,7 @@ public class ProxyFactory {
                     invokeUrls.add(url);
                 try {
                     result = httpClient.send(url.getHostName(),url.getPort(),invocation);
+                    return result;
                 }catch (Exception e){
 
                     //服务容错回调的处理可以写在这里

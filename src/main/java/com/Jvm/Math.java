@@ -24,6 +24,6 @@ public class Math {
     public static void main(String[] args) {
         Math math = new Math();
         math.computer();
-        System.out.println();
+        System.out.println(1);
     }
 }
