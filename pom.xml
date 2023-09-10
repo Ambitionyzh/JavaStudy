@@ -15,6 +15,7 @@
         <module>yongzhRpc</module>
         <module>tomcat</module>
         <module>JVM</module>
+        <module>JUC</module>
     </modules>
 
 

@@ -1,4 +1,4 @@
-package cn.itcast.jvm.t3.jit;
+package src.cn.itcast.jvm.t3.jit;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

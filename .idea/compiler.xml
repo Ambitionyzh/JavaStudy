@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ProviderCommon" />
         <module name="JVM" />
-        <module name="yongzhRpc" />
         <module name="Consumer" />
+        <module name="jmh" />
         <module name="tomcat" />
+        <module name="ProviderCommon" />
+        <module name="JUC" />
+        <module name="yongzhRpc" />
         <module name="Provider" />
       </profile>
     </annotationProcessing>

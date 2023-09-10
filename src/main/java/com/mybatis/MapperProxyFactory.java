@@ -22,6 +22,7 @@ public class MapperProxyFactory {
         typeHandlerMap.put(Integer.class, new IntegerTypeHandler());
 
         try {
+            //反射
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
