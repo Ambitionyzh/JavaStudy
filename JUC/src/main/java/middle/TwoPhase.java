@@ -36,6 +36,7 @@ class TwoPhaseTermination{
                     Thread.sleep(1000);
                     log.debug("执行监控记录");
                 } catch (InterruptedException e) {
+                    //因为sleep出现异常后，会清除打断标记
                     e.printStackTrace();
                     //重新设置打断标记
                     current.interrupt();
