@@ -16,11 +16,11 @@ import static util.Sleeper.sleep;
 public class TestCountDownLatch {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         //王者荣耀等待十个人全部加载完成进入游戏
-       // test2();
+        // test2();
         //用等待CountDownLatch三个远程过程调用全都返回结果再执行，用Future来让主线程获取返回结果
         test3();
         //主线程等待123结束再执行，相比join更方便
-       // test4();
+        // test4();
         //最后一个线程等待前三个线程结束再执行
         //test5();
     }
