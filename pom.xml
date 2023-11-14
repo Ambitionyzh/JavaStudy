@@ -16,6 +16,7 @@
         <module>tomcat</module>
         <module>JVM</module>
         <module>JUC</module>
+        <module>idempotentDemo</module>
     </modules>
 
 
